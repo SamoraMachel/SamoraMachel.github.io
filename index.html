@@ -7,13 +7,64 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container align_items-center">
         <span class="display-6">Hi, am</span>
-        <h2>Samora Machel</h1>
-        <p>Am a Web Developer and Android Developer </p>
+        <br/>
+        <span class="display-3 dev-name "></span><hr/> 
+        <br/>
+
+        <span class="text-slider-items d-none ">
+            Am a Web Developer, 
+            Android Developer, 
+            upcoming Blockchain Developer, 
+            and Data Scientist, 
+            I love novels, 
+            but Enterpreneurship is bae 
+        </span>
+        <p class="dev-bio d-inline"></p>
     </div>
     
+
+    <script src="js/typed.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src="./js/main.js"></script>
+
+    <script>
+        let developerBio = $(".text-slider-items").text();
+        let developerName = "Samora Machel";
+
+        function typeBio() {
+            return typed = new Typed(".dev-bio", {
+                strings: developerBio.split(", "),
+                typeSpeed: 50,
+                loop: false,
+                backDelay: 900,
+                backSpeed: 30,
+            });
+        }
+
+        function typeUsername() {
+            return typed = new Typed('.dev-name', {
+                strings: [developerName],
+                typeSpeed: 100,
+                loop: false,
+                backDelay: 900,
+                backSpeed: 30,
+                onComplete: (self) => {
+                    typeBio()
+                }
+            });
+        }
+
+        if ($(".dev-name").length == 1) {    
+            typeUsername();
+        } else {
+            let dataLength = $(".text-slider").length
+            console.log(dataLength)
+        }
+    </script>
 </body>
 </html>
